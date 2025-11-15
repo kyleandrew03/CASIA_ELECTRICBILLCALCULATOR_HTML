@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Bill Calculator</title>
+<link rel="stylesheet" href="calculate.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="home.html" class="back-btn">&#8592;</a>
+
+    <h1 class="title">
+        Electric<br>
+        Bill<br>
+        Calculator
+    </h1>
+
+    <div class="form-box">
+        <label>KWH:</label>
+        <input type="number" id="kwh">
+
+        <label>Rate:</label>
+        <input type="number" id="rate">
+
+        <button class="calc-btn" onclick="goToResult()">Calculate</button>
+    </div>
+
+    <!-- Battery Icon -->
+    <div class="battery-icon">
+        <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#213d63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="10" width="44" height="36" rx="6" ry="6"></rect>
+                <rect x="50" y="20" width="4" height="12" rx="1" ry="1"></rect>
+                <line x1="16" y1="20" x2="16" y2="46"></line>
+                <line x1="26" y1="20" x2="26" y2="46"></line>
+                <line x1="36" y1="20" x2="36" y2="46"></line>
+                <polyline points="56,8 60,14 56,14 60,22" stroke="#213d63" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+</div>
+
+<script>
+function goToResult() {
+    let kwh = document.getElementById("kwh").value;
+    let rate = document.getElementById("rate").value;
+
+    if (kwh === "" || rate === "") {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    // Redirect to the results page with values
+    window.location.href = `result.html?kwh=${kwh}&rate=${rate}`;
+}
+</script>
+
+</body>
+</html>

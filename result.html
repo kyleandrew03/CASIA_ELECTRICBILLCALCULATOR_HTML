@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Bill Result</title>
+<link rel="stylesheet" href="result.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <a href="calculate.html" class="back-btn">&#8592;</a>
+
+    <h1 class="title">
+        Electric<br>
+        Bill<br>
+        Calculator
+    </h1>
+
+    <div class="form-box">
+
+        <label class="blue-label">KWH:</label>
+        <input type="text" id="kwhDisplay" readonly>
+
+        <label class="blue-label">Rate:</label>
+        <input type="text" id="rateDisplay" readonly>
+
+        <label class="blue-label">Your bill is:</label>
+        <input type="text" id="billDisplay" readonly>
+
+        <button class="calc-btn">Save Bill</button>
+    </div>
+
+    <!-- Battery Icon -->
+    <div class="battery-icon">
+        <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" stroke="#213d63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="6" y="10" width="44" height="36" rx="6" ry="6"></rect>
+                <rect x="50" y="20" width="4" height="12" rx="1" ry="1"></rect>
+                <line x1="16" y1="20" x2="16" y2="46"></line>
+                <line x1="26" y1="20" x2="26" y2="46"></line>
+                <line x1="36" y1="20" x2="36" y2="46"></line>
+                <polyline points="56,8 60,14 56,14 60,22" stroke="#213d63" stroke-width="3"/>
+            </g>
+        </svg>
+    </div>
+
+</div>
+
+<script>
+// Get values from URL
+const urlParams = new URLSearchParams(window.location.search);
+let kwh = urlParams.get("kwh");
+let rate = urlParams.get("rate");
+
+// Compute bill
+let bill = kwh * rate;
+
+// Display them
+document.getElementById("kwhDisplay").value = kwh;
+document.getElementById("rateDisplay").value = "₱" + parseFloat(rate).toFixed(2);
+document.getElementById("billDisplay").value = "₱" + bill.toLocaleString();
+</script>
+
+</body>
+</html>
