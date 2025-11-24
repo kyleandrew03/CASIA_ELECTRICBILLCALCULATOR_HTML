@@ -1,87 +1,80 @@
-/* ----- GENERAL PAGE STYLING ----- */
-body {
-    margin: 0;
-    padding: 0;
-    background: #e7dfdd; /* light background like screenshot */
-    font-family: Arial, sans-serif;
+:root{
+  --bg:#e8dddc;
+  --input-bg:#ffffff;
+  --input-border:#e6e6e6;
+  --accent:#213d63;
+  --placeholder:#9aa4ab;
 }
 
-.container {
-    width: 100%;
-    height: 100vh;
-    padding: 30px;
-    position: relative;
+html,body{
+  margin:0;
+  font-family:"Roboto Mono", monospace;
+  background: #d4cbc8;
 }
 
-/* Back Button */
-.back-btn {
-    text-decoration: none;
-    font-size: 25px;
-    color: #333;
+.container{
+  position:relative;
+  width:100%;
+  max-width:560px;
+  margin:auto;
+  padding:40px 20px;
+  min-height:100vh;
 }
 
-/* Title */
-.title {
-    font-size: 32px;
-    line-height: 1.2;
-    margin-top: 40px;
-    color: #000b3a;
-    font-weight: 400;
+.back-btn{
+  font-size:32px;
+  color:var(--accent);
+  text-decoration:none;
+  position:absolute;
+  left:20px;
+  top:20px;
 }
 
-/* ----- FORM ----- */
-.form-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 260px;
-    text-align: center;
+.title{
+  font-size:48px;
+  font-weight:300;
+  color:var(--accent);
+  line-height:1.1;
+  margin-top:80px;
 }
 
-label {
-    display: block;
-    text-align: left;
-    margin-bottom: 5px;
-    color: #333;
-    font-size: 14px;
+.form-box{
+  margin-top:40px;
+  display:flex;
+  flex-direction:column;
+  width:250px;
 }
 
-input {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    margin-bottom: 20px;
-    outline: none;
+.form-box label{
+  margin-top:10px;
+  font-size:16px;
+  color:#314460;
 }
 
-/* Calculate Button */
-.calc-btn {
-    width: 150px;
-    padding: 10px;
-    background: #144c7b;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
+.form-box input{
+  padding:10px;
+  border-radius:6px;
+  border:1px solid var(--input-border);
+  margin-bottom:10px;
+  background:white;
+  font-size:14px;
 }
 
-.calc-btn:hover {
-    opacity: 0.85;
+.calc-btn{
+  margin-top:18px;
+  padding:12px;
+  background:var(--accent);
+  color:white;
+  border:none;
+  border-radius:12px;
+  width:150px;
+  cursor:pointer;
+  font-size:18px;
 }
 
-/* ----- BATTERY ICON ----- */
-.battery-icon {
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-    opacity: 0.9;
-}
-
-.battery-icon svg {
-    width: 70px;
-    height: 70px;
+.battery-icon{
+  position:absolute;
+  right:20px;
+  bottom:20px;
+  opacity:0.9;
 }

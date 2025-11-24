@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  background: #d4cbc8;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-box {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+h2 {
+  text-align: center;
+  color: #213d63;
+}
+
+label {
+  color: #213d63;
+  margin-bottom: 4px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #b9b9b9;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-family: "Roboto Mono", monospace;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #213d63;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #213d63;
+}

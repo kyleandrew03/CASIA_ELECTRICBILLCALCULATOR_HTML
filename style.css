@@ -1,3 +1,34 @@
+body {
+  background-color: #d4cbc8;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Style the heading */
+h1 {
+  color: #3333cc;
+}
+
+/* Style the paragraph */
+p {
+  color: #555;
+  font-size: 18px;
+}
+
+/* Style the button */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
 :root{
   --bg:#e8dddc;
   --input-bg:#ffffff;

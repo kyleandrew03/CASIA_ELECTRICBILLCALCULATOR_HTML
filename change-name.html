@@ -4,23 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Change Name</title>
-  <link rel="stylesheet" href="cname.css">
+  <link rel="stylesheet" href="change-name.css">
 </head>
-
 <body>
 
-<div class="container">
+<div class="edit-container">
   <h2>Change Name</h2>
 
-  <form>
-    <label>New Full Name</label>
-    <input type="text" placeholder="Enter new name">
+  <label>New Name</label>
+  <input type="text" id="newName">
 
-    <button type="submit">Save</button>
-  </form>
+  <button id="saveName">Save</button>
 
-  <a href="profile.html" class="back">← Back to Profile</a>
+  <a href="profile.html" class="back-link">Back</a>
 </div>
+
+<script>
+document.getElementById("saveName").addEventListener("click", function(){
+  let newName = document.getElementById("newName").value.trim();
+  if(newName === "") return alert("Name cannot be empty.");
+
+  let user = JSON.parse(localStorage.getItem("billmateUser"));
+  user.name = newName;
+
+  localStorage.setItem("billmateUser", JSON.stringify(user));
+  localStorage.setItem("loggedInUser", newName);
+
+  alert("Name updated successfully!");
+  window.location.href = "profile.html";
+});
+</script>
 
 </body>
 </html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Phone</title>
+  <link rel="stylesheet" href="change-phone.css">
+</head>
+<body>
+
+<div class="edit-container">
+  <h2>Change Phone Number</h2>
+
+  <label>New Phone</label>
+  <input type="text" id="newPhone">
+
+  <button id="savePhone">Save</button>
+
+  <a href="profile.html" class="back-link">Back</a>
+</div>
+
+<script>
+document.getElementById("savePhone").addEventListener("click", function(){
+  let newPhone = document.getElementById("newPhone").value.trim();
+  if(newPhone === "") return alert("Phone cannot be empty.");
+
+  let user = JSON.parse(localStorage.getItem("billmateUser"));
+  user.phone = newPhone;
+
+  localStorage.setItem("billmateUser", JSON.stringify(user));
+
+  alert("Phone updated successfully!");
+  window.location.href = "profile.html";
+});
+</script>
+
+</body>
+</html>

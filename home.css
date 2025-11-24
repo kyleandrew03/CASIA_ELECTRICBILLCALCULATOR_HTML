@@ -22,6 +22,10 @@ body {
   right: 30px;   
 }
 
+.profile-icon {
+  cursor: pointer;
+}
+
 /* Battery bottom-right */
 .bottom-icon {
   position: absolute;

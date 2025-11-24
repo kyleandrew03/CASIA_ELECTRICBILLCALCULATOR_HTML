@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Email</title>
+  <link rel="stylesheet" href="change-email.css">
+</head>
+<body>
+
+<div class="edit-container">
+  <h2>Change Email</h2>
+
+  <label>New Email</label>
+  <input type="email" id="newEmail">
+
+  <button id="saveEmail">Save</button>
+
+  <a href="profile.html" class="back-link">Back</a>
+</div>
+
+<script>
+document.getElementById("saveEmail").addEventListener("click", function(){
+  let newEmail = document.getElementById("newEmail").value.trim();
+  if(newEmail === "") return alert("Email cannot be empty.");
+
+  let user = JSON.parse(localStorage.getItem("billmateUser"));
+  user.email = newEmail;
+
+  localStorage.setItem("billmateUser", JSON.stringify(user));
+
+  alert("Email updated successfully!");
+  window.location.href = "profile.html";
+});
+</script>
+
+</body>
+</html>

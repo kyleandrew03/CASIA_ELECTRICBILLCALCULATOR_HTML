@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - Bill Mate</title>
-
   <link rel="stylesheet" href="signup.css">
 </head>
 
@@ -26,19 +25,18 @@
         </svg>
       </div>
 
-      <!-- Title -->
       <h1 class="title">Sign Up</h1>
 
       <!-- Form -->
       <form class="signup-form">
 
         <label>Full name</label>
-        <input type="text" required>
+        <input id="fullName" type="text" required>
 
-        <label>Email Address:</label>
-        <input type="email" required>
+        <label>Email Address</label>
+        <input id="email" type="email" required>
 
-        <label>Date of birth</label>
+        <label>Date of Birth</label>
         <input type="date" required>
 
         <label>Location</label>
@@ -49,14 +47,14 @@
           <option>Davao</option>
         </select>
 
-        <label>Phone number:</label>
-        <input type="text" placeholder="(+63)" required>
+        <label>Phone number</label>
+        <input id="phone" type="text" placeholder="(+63)" required>
 
         <label>Password</label>
-        <input type="password" required>
+        <input id="pass1" type="password" required>
 
         <label>Confirm Password</label>
-        <input type="password" required>
+        <input id="pass2" type="password" required>
 
         <button class="confirm-btn" type="submit">Confirm</button>
 
@@ -65,5 +63,36 @@
       <div class="spacer"></div>
     </div>
   </div>
+
+  <!-- SIGNUP JS -->
+  <script>
+    document.querySelector(".signup-form").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const name = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const pass1 = document.getElementById("pass1").value;
+      const pass2 = document.getElementById("pass2").value;
+
+      if (pass1 !== pass2) {
+          alert("Passwords do not match!");
+          return;
+      }
+
+      const user = {
+          name: name,
+          email: email,
+          phone: phone,
+          password: pass1
+      };
+
+      localStorage.setItem("billmateUser", JSON.stringify(user));
+      alert("Account created successfully!");
+
+      window.location.href = "index.html";
+    });
+  </script>
+
 </body>
 </html>

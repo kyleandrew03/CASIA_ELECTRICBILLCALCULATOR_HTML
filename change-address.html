@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Address</title>
+  <link rel="stylesheet" href="change-address.css">
+</head>
+<body>
+
+<div class="edit-container">
+  <h2>Change Address</h2>
+
+  <label>New Address</label>
+  <input type="text" id="newAddress">
+
+  <button id="saveAddress">Save</button>
+
+  <a href="profile.html" class="back-link">Back</a>
+</div>
+
+<script>
+document.getElementById("saveAddress").addEventListener("click", function(){
+  let newAddress = document.getElementById("newAddress").value.trim();
+  if(newAddress === "") return alert("Address cannot be empty.");
+
+  let user = JSON.parse(localStorage.getItem("billmateUser"));
+  user.address = newAddress;
+
+  localStorage.setItem("billmateUser", JSON.stringify(user));
+
+  alert("Address updated successfully!");
+  window.location.href = "profile.html";
+});
+</script>
+
+</body>
+</html>

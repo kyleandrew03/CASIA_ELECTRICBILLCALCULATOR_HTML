@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<a href="home.html" class="back-btn">Back</a>
+
+<div class="container">
+
+  <div class="profile-icon-big">
+    <svg width="80" height="80" viewBox="0 0 64 64">
+      <circle cx="32" cy="20" r="12" stroke="#213d63" stroke-width="3" fill="none"/>
+      <path d="M16 52c0-10 8-18 16-18s16 8 16 18" stroke="#213d63" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <h2 class="title">Profile</h2>
+
+  <div class="field-box">
+    <input id="profName" type="text" disabled>
+    <a href="change-name.html" class="edit-link">Change name</a>
+  </div>
+
+  <div class="field-box">
+    <input id="profEmail" type="text" disabled>
+    <a href="change-email.html" class="edit-link">Change email</a>
+  </div>
+
+  <div class="field-box">
+    <input id="profAddress" type="text" disabled>
+    <a href="change-address.html" class="edit-link">Change address</a>
+  </div>
+
+  <div class="field-box">
+    <input id="profPhone" type="text" disabled>
+    <a href="change-phone.html" class="edit-link">Change phone</a>
+  </div>
+
+  <button class="blue-btn" onclick="location.href='change-pass.html'">Change Password</button>
+  <button class="logout-btn" onclick="logout()">Logout</button>
+
+</div>
+
+<script>
+let user = JSON.parse(localStorage.getItem("billmateUser"));
+
+if(!user) {
+  alert("No user found. Please login.");
+  window.location.href = "index.html";
+}
+
+// Populate profile fields
+document.getElementById("profName").value = user.name;
+document.getElementById("profEmail").value = user.email;
+document.getElementById("profAddress").value = user.address || "";
+document.getElementById("profPhone").value = user.phone;
+
+function logout() {
+  localStorage.removeItem("loggedInUser");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

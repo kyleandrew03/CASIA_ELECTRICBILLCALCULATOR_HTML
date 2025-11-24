@@ -50,18 +50,35 @@
 </div>
 
 <script>
-// Get values from URL
+// Read values from URL
 const urlParams = new URLSearchParams(window.location.search);
 let kwh = urlParams.get("kwh");
 let rate = urlParams.get("rate");
 
-// Compute bill
 let bill = kwh * rate;
 
-// Display them
+// Display
 document.getElementById("kwhDisplay").value = kwh;
 document.getElementById("rateDisplay").value = "₱" + parseFloat(rate).toFixed(2);
 document.getElementById("billDisplay").value = "₱" + bill.toLocaleString();
+
+// Save bill
+document.querySelector(".calc-btn").addEventListener("click", function(){
+
+    let history = JSON.parse(localStorage.getItem("billHistory")) || [];
+
+    history.push({
+        date: new Date().toLocaleString(),
+        kwh: kwh,
+        rate: rate,
+        total: bill
+    });
+
+    localStorage.setItem("billHistory", JSON.stringify(history));
+
+    alert("Bill saved!");
+    window.location.href = "home.html";
+});
 </script>
 
 </body>
