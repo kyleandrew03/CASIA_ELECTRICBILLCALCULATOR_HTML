@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Code</title>
+    <link rel="stylesheet" href="verify.css">
+</head>
+<body>
+
+    <div class="top-icon">
+        <svg width="72" height="72" viewBox="0 0 64 64">
+          <g fill="none" stroke="#213d63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="10" width="44" height="36" rx="6"></rect>
+            <rect x="50" y="20" width="4" height="12" rx="1"></rect>
+            <line x1="16" y1="20" x2="16" y2="46"></line>
+            <line x1="26" y1="20" x2="26" y2="46"></line>
+            <line x1="36" y1="20" x2="36" y2="46"></line>
+            <polyline points="56,8 60,14 56,14 60,22" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+
+<div class="container">
+    <h1 class="title">Enter Code</h1>
+
+    <form class="code-form">
+        <label>Verification Code</label>
+        <input id="verCode" type="number" required>
+
+        <button class="next-btn" type="submit">Next</button>
+    </form>
+</div>
+
+<script>
+document.querySelector(".code-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const codeInput = document.getElementById("verCode").value;
+    const savedCode = localStorage.getItem("resetCode");
+
+    if (codeInput === savedCode) {
+        window.location.href = "reset.html";
+    } else {
+        alert("Incorrect code!");
+    }
+});
+</script>
+
+</body>
+</html>

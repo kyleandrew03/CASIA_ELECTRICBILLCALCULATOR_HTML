@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="reset.css">
+</head>
+<body>
+
+    <div class="top-icon">
+        <svg width="72" height="72" viewBox="0 0 64 64">
+          <g fill="none" stroke="#213d63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="10" width="44" height="36" rx="6"></rect>
+            <rect x="50" y="20" width="4" height="12" rx="1"></rect>
+            <line x1="16" y1="20" x2="16" y2="46"></line>
+            <line x1="26" y1="20" x2="26" y2="46"></line>
+            <line x1="36" y1="20" x2="36" y2="46"></line>
+            <polyline points="56,8 60,14 56,14 60,22" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+
+<div class="container">
+    <h1 class="title">Reset Password</h1>
+
+    <form class="reset-form">
+        <label>New Password</label>
+        <input id="newPass" type="password" required>
+
+        <label>Confirm Password</label>
+        <input id="confirmPass" type="password" required>
+
+        <button type="submit" class="save-btn">Save</button>
+    </form>
+</div>
+
+<script>
+document.querySelector(".reset-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const p1 = document.getElementById("newPass").value;
+    const p2 = document.getElementById("confirmPass").value;
+
+    if (p1 !== p2) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    const email = localStorage.getItem("resetEmail");
+    let user = JSON.parse(localStorage.getItem("billmateUser"));
+
+    if (user.email === email) {
+        user.password = p1;
+        localStorage.setItem("billmateUser", JSON.stringify(user));
+    }
+
+    localStorage.removeItem("resetEmail");
+    localStorage.removeItem("resetCode");
+
+    alert("Password changed successfully!");
+    window.location.href = "index.html";
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="forgot-pass.css">
+</head>
+<body>
+
+  <div class="top-icon">
+        <svg width="72" height="72" viewBox="0 0 64 64">
+          <g fill="none" stroke="#213d63" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="10" width="44" height="36" rx="6"></rect>
+            <rect x="50" y="20" width="4" height="12" rx="1"></rect>
+            <line x1="16" y1="20" x2="16" y2="46"></line>
+            <line x1="26" y1="20" x2="26" y2="46"></line>
+            <line x1="36" y1="20" x2="36" y2="46"></line>
+            <polyline points="56,8 60,14 56,14 60,22" stroke-width="3"/>
+          </g>
+        </svg>
+      </div>
+
+<div class="container">
+    <h1 class="title">Forgot Password</h1>
+
+    <form class="forgot-form">
+        <label>Enter your Email</label>
+        <input id="fpEmail" type="email" required>
+
+        <button type="submit" class="send-btn">Send Code</button>
+    </form>
+</div>
+
+<script>
+document.querySelector(".forgot-form").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("fpEmail").value;
+    const user = JSON.parse(localStorage.getItem("billmateUser"));
+
+    if (!user || user.email !== email) {
+        alert("Email not found!");
+        return;
+    }
+
+    // generate 6-digit code
+    const code = Math.floor(100000 + Math.random() * 900000);
+
+    localStorage.setItem("resetEmail", email);
+    localStorage.setItem("resetCode", code);
+
+    alert("Your verification code is: " + code);
+
+    window.location.href = "verify.html";
+});
+</script>
+
+</body>
+</html>
